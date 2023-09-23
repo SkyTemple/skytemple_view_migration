@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skytemple_view_migration"
+version = "1.0.0"
+authors = [
+    {name = "Marco 'Capypara' Köpcke", email = "hello@capypara.de"},
+]
+description = "A SkyTemple development tool to migrate controllers to widgets"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "GPL-3.0-or-later"}
+dependencies = [
+    "click ~= 8.0"
+]
+
+[project.scripts]
+skytemple-migrate-view = "skytemple_view_migration:main"
