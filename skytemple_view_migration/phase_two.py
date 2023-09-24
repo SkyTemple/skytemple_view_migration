@@ -214,7 +214,7 @@ class ControllerToWidgetTransformer(ast.NodeTransformer):
         # Add Gtk.Template decorator to class
         node.decorator_list.append(
             expr(
-                f'Gtk.Template(filename=os.path.join(data_dir(), "{self.info.module_name}", "script", "{self.info.controller_name}.ui"))',
+                f'Gtk.Template(filename=os.path.join(data_dir(), "widget", "{self.info.module_name}", "{self.info.controller_name}.ui"))',
             )
         )
         self.actions_done.cls_add_gtk_template = True
