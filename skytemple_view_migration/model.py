@@ -17,4 +17,7 @@ class ControllerAndGlade:
             return ast_comments.parse(f.read())
 
     def load_glade_tree(self):
-        return ElementTree.parse(self.glade_path)
+        parser = ElementTree.XMLParser(
+            target=ElementTree.TreeBuilder(insert_comments=True)
+        )
+        return ElementTree.parse(self.glade_path, parser=parser)

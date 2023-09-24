@@ -11,6 +11,9 @@ from skytemple_view_migration.model import ControllerAndGlade
 class CollectInfoEntry:
     module_name: str
     controller_name: str
+    glade_path: str
+    controller_path: str
+    controller_class_name: Optional[str] = None
     module_class: Optional[str] = None
     main_widget_name: Optional[str] = None
     main_widget_type: Optional[str] = None
@@ -55,7 +58,10 @@ class CollectInfo:
         p = controller.controller_path
         if p not in self.entries:
             self.entries[p] = CollectInfoEntry(
-                controller.module_name, controller.controller_name
+                controller.module_name,
+                controller.controller_name,
+                controller.controller_path,
+                controller.glade_path,
             )
         return self.entries[p]
 

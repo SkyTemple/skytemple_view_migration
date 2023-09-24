@@ -9,6 +9,11 @@ def assert_is(typ: Type[T], obj: Any) -> T:
     return obj
 
 
+def assert_not_none(obj: Optional[T]) -> T:
+    assert obj is not None
+    return obj
+
+
 def camel_case(input_string: str) -> str:
     string_with_spaces = input_string.replace("-", " ").replace("_", " ")
     title_case_string = string_with_spaces.title()

@@ -26,6 +26,7 @@ def run_phase1(skytemple_directory: str, collect_info: CollectInfo):
             p_warn(f"Skipping because of not direct base class {base_class}...")
             continue
         assert cls_ast is not None
+        info.controller_class_name = cls_ast.name
 
         glade_tree = controller.load_glade_tree()
 
