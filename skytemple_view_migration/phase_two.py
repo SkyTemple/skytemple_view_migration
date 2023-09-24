@@ -285,6 +285,11 @@ class ControllerToWidgetTransformer(ast.NodeTransformer):
         if node.name == "__init__":
             # Add super call to __init__
             node.body.insert(0, stmt("super().__init__()"))
+            node.body.insert(1, stmt(f"self.module = {node.args.args[1].arg}"))
+            if len(node.args.args) > 2:
+                node.body.insert(2, stmt(f"self.item_data = {node.args.args[2].arg}"))
+            else:
+                node.body.insert(2, stmt(f"self.item_data = None"))
             self.actions_done.fun_add_super = True
 
             # Removes return from __init__
