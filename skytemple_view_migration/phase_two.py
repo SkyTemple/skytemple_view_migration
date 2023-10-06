@@ -412,6 +412,7 @@ def transform_widget_ast(
     controller_ast: ast.AST, glade_tree: ElementTree, info: CollectInfoEntry
 ) -> ast.AST:
     widgets, signal_handlers = collect_widgets(glade_tree.getroot())
+    del widgets[info.main_widget_name]
     v = ControllerToWidgetTransformer(info, widgets, signal_handlers)
     return v.visit(controller_ast)
 
