@@ -275,10 +275,11 @@ class ControllerToWidgetTransformer(ast.NodeTransformer):
     def visit_FunctionDef(self, node: FunctionDef) -> ast.AST:
         # Adds callbacks to signal handlers
         if node.name in self.signal_handlers:
-            node.decorator_list.append(
+            node.decorator_list.insert(
+                0,
                 expr(
                     "Gtk.Template.Callback()",
-                )
+                ),
             )
         self.actions_done.fun_add_callbacks = True
 
